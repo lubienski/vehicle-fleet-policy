@@ -1,0 +1,36 @@
+\documentclass{article}
+
+
+\usepackage{amsmath}
+
+\title{Fleet Model DP Equations}
+
+\author{Anna Lubienski, Jingxin Du}
+
+\begin{document}
+
+\maketitle
+
+$x_{t}$ represents the state of the system at the end of the day t, before the overnight transfer.
+
+$U_{ijt}$ represents the transfer of vehicle on day t, where i is the origin and j is the destination.
+$$
+U_t = 
+\begin{bmatrix}
+U_{aa} & U_{ab} & U_{ac}\\
+U_{ba} & U_{bb} & U_{bc}\\
+U_{ca} & U_{cb} & U_{c112}
+\end{bmatrix}
+$$
+
+$W_{ijt}$ represents the demands on day t, where i is the origin and j is the destination.
+
+$$
+W_t = 
+\begin{bmatrix}
+W_{aa} & W_{ab} & W_{ac}\\
+W_{ba} & W_{bb} & W_{bc}\\
+W_{ca} & W_{cb} & W_{cb}
+\end{bmatrix}
+$$
+\end{document}
