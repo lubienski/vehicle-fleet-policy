@@ -11,15 +11,21 @@
 
 \maketitle
 
-$x_{t}$ represents the state of the system at the end of the day t, before the overnight transfer.
+$X_{t}$ represents the state of the system at the start of the day t, before the car rental happens.
+
+$$
+X_t = \begin{bmatrix}
+X_{a} & X_{b} & X_{c}
+\end{bmatrix}
+$$
 
 $U_{ijt}$ represents the transfer of vehicle on day t, where i is the origin and j is the destination.
 $$
 U_t = 
 \begin{bmatrix}
-U_{aa} & U_{ab} & U_{ac}\\
-U_{ba} & U_{bb} & U_{bc}\\
-U_{ca} & U_{cb} & U_{c112}
+0 & U_{ab} & U_{ac}\\
+U_{ba} & 0 & U_{bc}\\
+U_{ca} & U_{cb} & 0
 \end{bmatrix}
 $$
 
@@ -30,7 +36,25 @@ W_t =
 \begin{bmatrix}
 W_{aa} & W_{ab} & W_{ac}\\
 W_{ba} & W_{bb} & W_{bc}\\
-W_{ca} & W_{cb} & W_{cb}
+W_{ca} & W_{cb} & W_{cc}
 \end{bmatrix}
 $$
+
+The state transit function is:
+
+\begin{align*}
+x_{t+1, a} &= x_{t, a} + U_{t,ba} + U_{t,ca} - U_{t,ab} - U_{t,ac} + W_{t, ba} + W_{t, ca} - W_{t, ab} - W_{t, ac} \\
+x_{t+1, b} &= x_{t, b} + U_{t,ab} + U_{t,cb} - U_{t,ba} - U_{t,bc} + W_{t, ab} + W_{t, cb} - W_{t, ba} - W_{t, bc} \\
+x_{t+1, c} &= x_{t, c} + U_{t,ac} + U_{t,bc} - U_{t,ca} - U_{t,cb} + W_{t, ac} + W_{t, bc} - W_{t, ca} - W_{t, cb} \\
+\end{align*}
+
+
+Profit is based on everything in demands,
+
+$$
+r1E(min(y_t, W_ij)) + r2E(min(y_t, W_ij))
+$$
+
+The optimality equation is:
+
 \end{document}
