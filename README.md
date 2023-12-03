@@ -1,5 +1,3 @@
-'''
-
 Here are the files that I have been running:
 
 **main.py**
@@ -20,4 +18,4 @@ Here are the files that I have been running:
 -  Value to go: J(x, k) = max{H(u, k) - transferCost(x-->u)}
 -  Helper function: H(u, k) = E{stageValue(w) + J(f(u, w), k-1)}
   
-'''
+
