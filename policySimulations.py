@@ -26,7 +26,7 @@ class Location:
         self.incoming = 0
 
 '''
-Simulation for the default model (no transfers)
+Simulation for the default model with no transfers (u = x)
 '''
 class BasePolicy:
     def __init__(self, state):
@@ -37,7 +37,7 @@ class BasePolicy:
         self.initCounts = state
         self.locs = [self.A, self.B, self.C]
 
-        self.demandFunction = lambda: round(np.random.lognormal(3, 0.25)) # Assuming demand comes from a uniform distribution
+        self.demandFunction = lambda: round(np.random.lognormal(3, 0.25)) # Same demand function for all 9 demands
         self.lowerRate = 100 # Price to rent a car locally
         self.higherRate = 150 # Price to rent a car and return it in a different city
         self.transferCost = 50  # Cost to transfer each vehicle overnight
@@ -182,7 +182,7 @@ class TwoLimitPolicy(BasePolicy):
         return nextCount
 
 '''
-Simulation with a policy that does not depend on state.
+Simulation with a policy that does not depend on state. (Choose the same u everytime.)
 '''
 class ConstantPolicy(BasePolicy):
     def __init__(self, state, u):
@@ -193,7 +193,7 @@ class ConstantPolicy(BasePolicy):
     def generatePlan(self):
         self.plan = [self.constantPolicy[loc.index] - loc.count for loc in self.locs] 
 
-def comparePolicies(initState):
+def viewPolicies(initState):
     policies = [
         BasePolicy(initState),  
         HalfResetPolicy(initState), 
