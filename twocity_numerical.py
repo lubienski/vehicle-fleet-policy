@@ -3,6 +3,7 @@ import numpy as np
 # Parameters
 T = 5  # Planning horizon
 n = 5  # Total number of cars
+max_n = 20 # Maximum number of total cars
 h = 1   # Daily operating cost per car
 k = 10  # Cost for transferring one car between two cities
 r1 = 30 # Rental rate for type-1
@@ -27,7 +28,6 @@ def V(t, xt):
     if t == 0:
         return 0
     max_income = -np.inf
-    #print("here222")
     for yt in range(n+1):
         D11, D12, D21, D22 = simulate_demand()
         revenue = calculate_revenue(yt, D11, D12, D21, D22)
@@ -40,7 +40,7 @@ def V(t, xt):
 def main():
     max_profit = -np.inf
     best_n = best_x_T = 0
-    for n in range(1, 21):  # Trying different fleet sizes
+    for n in range(1, max_n+1):  # Trying different fleet sizes
         for x_T in range(n+1):  # Trying different initial allocations
             profit = V(T, x_T) - h * n * T
             if profit > max_profit:

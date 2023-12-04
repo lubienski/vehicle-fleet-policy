@@ -56,5 +56,22 @@ r1E(min(y_t, W_ij)) + r2E(min(y_t, W_ij))
 $$
 
 The optimality equation is:
+% \begin{align*}
+% g(x, u, w) &= \frac{1}{2} t \sum_{i}|u^{i}- x^{i}| - \sum_{i}(r_{low}w'_{ii}+r_{high}\sum_{j \neq i}w'_{ji})\\
+% &= \frac{1}{2} t \sum_{i}|u^{i}- x^{i}| - r_{low}\left( \max\{0, \min\{w_{bc}+w_{ba}+w_{aa}, u^{a}\}-\{w_{ab}+w_{ac}\right.\}\}\\
+% &\left.+\max\{0, \min\{w_{bc}+w_{ba}+w_{aa}, u^{a}\}-\{w_{ab}+w_{ac}\}\}\right.\\
+% &\left.+\max\{0, \min\{w_{bc}+w_{ba}+w_{aa}, u^{a}\}-\{w_{ab}+w_{ac}\}\}\right)\\
+% &+r_{high}\left(\min\{w_{ab}, u^{a}\} + \max\{0, \min\{w_{ab}+w_{ac}, u^{a} -w_{ab}\}\} \right.\\
+% &+\left.\min\{w_{ab}, u^{a}\} + \max\{0, \min\{w_{ab}+w_{ac}, u^{a} -w_{ab}\}\} \right)\\
+% &+\left.\min\{w_{ab}, u^{a}\} + \max\{0, \min\{w_{ab}+w_{ac}, u^{a} -w_{ab}\}\} \right)
+% \end{align*}
 
+\[g(x, u, w) = \frac{1}{2} t \sum_{i}|u^{i} - x^{i}| - \sum_{i}(r_{low}w'_{ii}+r_{high}\sum_{j \neq i}w'_{ji}) \\
+= \frac{1}{2} t \sum_{i}|u^{i} - x^{i}| - r_{low}\left( \max\{0,\min\{w_{bc}+w_{ba}+w_{aa}, u^{a}\}-\min\{w_{ab}+w_{ac}, u^{a}\}\}\right)\\
++ r_{high}\left(\min\{w_{ab}, u^{a}\} + \max\{0, \min\{w_{ab}+w_{ac}, u^{a} -w_{ab}\}\}\right)\]
+
+
+\[
+J(X_{k}) = g(x_{k}, u_{k}, w_{k}) + J(x_{K+1})
+\]
 \end{document}
