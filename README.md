@@ -1,4 +1,5 @@
-Anna Lubienski and Jingxin Du, CS 723
+# Optimal Vehicle Fleet Policy
+### Anna Lubienski and Jingxin Du (CS 723)
 
 **transferPolicy.ipyn**
 - Notebook for simulating and comparing various vehicle transfer policies.
